@@ -8,4 +8,4 @@ ACCESS_TOKEN_SECRET = os.environ.get('ACCESS_TOKEN_SECRET')
 USER_ID = os.environ.get('USER_ID')
 PASSWORD = os.environ.get('PASSWORD')
 IDLE_TIME = os.environ.get('IDLE_TIME')
-
+REPEAT_TIME = os.environ.get('REPEAT_TIME')

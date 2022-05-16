@@ -24,6 +24,6 @@ def upload_file():
 
 if __name__ == '__main__':
     
-    scheduler.add_job(id = 'Start', func=create.time_checker, trigger="interval", seconds=600)
+    scheduler.add_job(id = 'Start', func=create.time_checker, trigger="interval", seconds=config.REPEAT_TIME)
     scheduler.start()
     app.run(host='localhost', port=8080, debug=True)
