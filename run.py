@@ -10,7 +10,7 @@ scheduler = APScheduler()
 
 @app.route('/upload', methods = ['POST'])
 def upload_file():
-    input_password = request.get_json()['password']
+    input_password = request.form['password']
     if input_password == config.PASSWORD:
         f = request.files['file']
         f.save('cardapio.xlsx')
@@ -19,6 +19,6 @@ def upload_file():
         return json.dumps({'message':'Incorrect password','status':401}),401 
 
 if __name__ == '__main__':
-    scheduler.add_job(id = 'Scheduled Task', func=create.time_checker, trigger="interval", seconds=3)
+    scheduler.add_job(id = ':)', func=create.time_checker, trigger="interval", seconds=300)
     scheduler.start()
     app.run(host='localhost', port=8080, debug=True)

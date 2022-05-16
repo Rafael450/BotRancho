@@ -27,14 +27,11 @@ def time_checker():
     client = tweepy.Client(bearer_token=config.BEARER_TOKEN)
     tweets = client.get_users_tweets(id=config.USER_ID, tweet_fields=['text', 'created_at'])
     for tweet in tweets.data:
-        print(((datetime.datetime.now()-tweet.created_at.replace(tzinfo=None)).total_seconds()/3600+3))
         if tweet.text[0:4] == "Data" and (datetime.datetime.now()-tweet.created_at.replace(tzinfo=None)).total_seconds()/3600+3 >= 3 and datetime.datetime.now().hour > 17:
             meal_tweet(2)
             break
         elif tweet.text[0:4] == "Data" and (datetime.datetime.now()-tweet.created_at.replace(tzinfo=None)).total_seconds()/3600+3 >= 3 and 17 > datetime.datetime.now().hour > 9:
             meal_tweet(1)
             break
-        else:
-            print(False)
 
 time_checker()
