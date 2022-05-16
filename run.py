@@ -22,8 +22,12 @@ def upload_file():
     else:
         return json.dumps({'message':'Incorrect password','status':401}),401 
 
-if __name__ == '__main__':
-    
+@app.route('/start', methods = ['POST'])
+def start_app():
+    print(config.IDLE_TIME)
     scheduler.add_job(id = 'Start', func=create.time_checker, trigger="interval", seconds=config.REPEAT_TIME)
     scheduler.start()
+    
+
+if __name__ == '__main__':
     app.run(host='localhost', port=8080, debug=True)
