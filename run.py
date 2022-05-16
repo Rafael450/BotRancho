@@ -8,6 +8,10 @@ import json
 app = Flask(__name__)
 scheduler = APScheduler()
 
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
 @app.route('/upload', methods = ['POST'])
 def upload_file():
     input_password = request.form['password']
