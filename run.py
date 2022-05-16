@@ -25,7 +25,7 @@ def upload_file():
 @app.route('/start', methods = ['POST'])
 def start_app():
     print(config.IDLE_TIME)
-    scheduler.add_job(id = 'Start', func=create.time_checker, trigger="interval", seconds=config.REPEAT_TIME)
+    scheduler.add_job(id = 'Start', func=create.time_checker, trigger="interval", seconds=int(config.REPEAT_TIME))
     scheduler.start()
     
 
