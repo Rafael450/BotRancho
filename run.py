@@ -23,6 +23,7 @@ def upload_file():
         return json.dumps({'message':'Incorrect password','status':401}),401 
 
 if __name__ == '__main__':
-    scheduler.add_job(id = ':)', func=create.time_checker, trigger="interval", seconds=300)
+    
+    scheduler.add_job(id = 'Start', func=create.time_checker, trigger="interval", seconds=600)
     scheduler.start()
     app.run(host='localhost', port=8080, debug=True)
