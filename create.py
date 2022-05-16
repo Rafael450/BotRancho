@@ -26,12 +26,11 @@ Bom rancho a todos.""".format(date, mealstr, food[0], food[1])
 def time_checker():
     client = tweepy.Client(bearer_token=config.BEARER_TOKEN)
     tweets = client.get_users_tweets(id=config.USER_ID, tweet_fields=['text', 'created_at'])
+    print("tested")
     for tweet in tweets.data:
-        if tweet.text[0:4] == "Data" and (datetime.datetime.now()-tweet.created_at.replace(tzinfo=None)).total_seconds()/3600+3 >= 3 and datetime.datetime.now().hour > 17:
+        if tweet.text[0:4] == "Data" and (datetime.datetime.now()-tweet.created_at.replace(tzinfo=None)).total_seconds()/3600+3 >= config.IDLE_TIME and datetime.datetime.now().hour > 17:
             meal_tweet(2)
             break
-        elif tweet.text[0:4] == "Data" and (datetime.datetime.now()-tweet.created_at.replace(tzinfo=None)).total_seconds()/3600+3 >= 3 and 17 > datetime.datetime.now().hour > 9:
+        elif tweet.text[0:4] == "Data" and (datetime.datetime.now()-tweet.created_at.replace(tzinfo=None)).total_seconds()/3600+3 >= config.IDLE_TIME and 17 > datetime.datetime.now().hour > 9:
             meal_tweet(1)
             break
-
-time_checker()
