@@ -1,1 +1,1 @@
-App criado pelo Sonar(25) :D
+App criado por Rafael Camargo (Sonar-T25)

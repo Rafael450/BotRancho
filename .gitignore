@@ -1,2 +1,5 @@
 *__pycache__
-secrets.py
+_secrets.py
+venv
+*.xlsx
+.env
